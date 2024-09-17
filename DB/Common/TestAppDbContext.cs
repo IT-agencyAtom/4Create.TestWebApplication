@@ -16,5 +16,6 @@ namespace TestWebApplication.DB.Common
         }
 
         public virtual DbSet<User> Users { get; set; } = null!;
+        public virtual DbSet<Project> Projects { get; set; } = null!;
     }
 }

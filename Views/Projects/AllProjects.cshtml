@@ -1,0 +1,29 @@
+@model IEnumerable<TestWebApplication.DB.Models.Project>
+
+@{
+	ViewBag.Title = "All Projects";
+}
+
+<div class="container mt-5">
+	<h1 class="mb-4">All Projects</h1>
+
+	<table class="table table-striped table-bordered">
+		<thead class="thead-dark">
+		<tr>
+			<th scope="col">Project Name</th>
+			<th scope="col">Accepting New Visits</th>
+			<th scope="col">Supported Image Type</th>
+		</tr>
+		</thead>
+		<tbody>
+		@foreach (var project in Model)
+		{
+			<tr ondblclick="window.location.href='@Url.Action("MainPage", "Projects", new { projectId = project.Id })'">
+				<td>@project.ProjectName</td>
+				<td>@project.AcceptingNewVisits</td>
+				<td>@project.SupportedImageType</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>

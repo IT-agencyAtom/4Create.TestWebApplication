@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TestWebApplication.DB.Common;
 using TestWebApplication.DB.Models;
-using TestWebApplication.Models;
 
 namespace TestWebApplication.Controllers
 {
     public class ProjectsController(TestAppDbContext _context) : Controller
     {
-        public IActionResult MainPage()
+        public IActionResult MainPage(int? projectId = null)
         {
             if (HttpContext.Session.GetString("UserSession") != null)
             {
@@ -17,24 +16,45 @@ namespace TestWebApplication.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            return View(new MainPageModel());
+
+            if (projectId == null)
+            {
+				return View(new Project());
+			}
+
+            var project = _context.Projects.FirstOrDefault(p => p.Id == projectId);
+            return project == null ? NotFound() : View(project);
         }
 
         [HttpPost]
-        public IActionResult MainPage(Project p)
+        public IActionResult AddProject(Project project)
         {
-
-            /*var myUser = _context.Users.FirstOrDefault(x => x.UserName == u.UserName && x.Password == u.Password);
-            if (myUser != null)
+            var existingProject = _context.Projects.FirstOrDefault(x => x.ProjectName == project.ProjectName);
+            if (existingProject != null)
+                ViewBag.Message = "Project with the same name already exists";
+            else
             {
-                HttpContext.Session.SetString("UserSession", myUser.UserName);
-                return RedirectToAction("MainPage", "Projects");
+                _context.Projects.Add(project);
+                _context.SaveChanges();
+
+                return RedirectToAction("AllProjects", "Projects");
+            }
+            return View("MainPage", project);
+        }
+
+        public IActionResult AllProjects()
+        {
+            if (HttpContext.Session.GetString("UserSession") != null)
+            {
+                ViewData["MySession"] = HttpContext.Session.GetString("UserSession").ToString();
             }
             else
             {
-                ViewBag.Message = "Password or username incorrect";
-            }*/
-            return View();
+                return RedirectToAction("Login", "Login");
+            }
+
+            var projects = _context.Projects.ToList();
+            return View(projects);
         }
-    }
+	}
 }

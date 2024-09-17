@@ -11,10 +11,10 @@ namespace TestWebApplication.DB.Models
         [Required(ErrorMessage = "Project name is required.")]
         public string ProjectName { get; set; }
 
-        public bool ProjectEnabled { get; set; }
+        public bool ProjectEnabled { get; set; } = true;
 
-        public bool AcceptingNewVisits { get; set; }
+        public bool AcceptingNewVisits { get; set; } = false;
 
-        public string SupportedImageType { get; set; }
+        public string? SupportedImageType { get; set; }
     }
 }
