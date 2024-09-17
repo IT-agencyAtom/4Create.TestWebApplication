@@ -11,4 +11,7 @@ For changing database settings:
 
 <h3>Watch the video : </h3>
 
-https://github.com/IT-agencyAtom/4Create.TestWebApplication/blob/d41d4806618dda53ef9fb33d7220e7394804f07a/wwwroot/videos/4Create.%20Test%20web%20app.mp4
+https://github.com/user-attachments/assets/47e78847-482f-4bc2-804c-8cec83033c14
+
+
+
