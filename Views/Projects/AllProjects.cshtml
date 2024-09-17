@@ -20,7 +20,7 @@
 		{
 			<tr ondblclick="window.location.href='@Url.Action("MainPage", "Projects", new { projectId = project.Id })'">
 				<td>@project.ProjectName</td>
-				<td>@project.AcceptingNewVisits</td>
+				<td>@project.AcceptingNewVisitsStr</td>
 				<td>@project.SupportedImageType</td>
 			</tr>
 		}

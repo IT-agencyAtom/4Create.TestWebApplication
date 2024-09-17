@@ -16,5 +16,7 @@ namespace TestWebApplication.DB.Models
         public bool AcceptingNewVisits { get; set; } = false;
 
         public string? SupportedImageType { get; set; }
+
+        public string AcceptingNewVisitsStr => AcceptingNewVisits ? "Yes" : "No";
     }
 }
