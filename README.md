@@ -5,6 +5,10 @@ This repository includes 4Create test web app using Asp .Net Core MVC and Entity
 - For Database Operation & Connectivity i have used Entity Framework Core.
 - For Login & Logout i have used Session.
 
+For changing database settings: 
+- Go to appsettings.json file and change the connection string.
+- Application will create the database and tables automatically when you run the application.
+
 <h3>Watch the video : </h3>
 
-https://github.com/IT-agencyAtom/4Create.TestWebApplication/assets/
+https://github.com/IT-agencyAtom/4Create.TestWebApplication/blob/d41d4806618dda53ef9fb33d7220e7394804f07a/wwwroot/videos/4Create.%20Test%20web%20app.mp4
